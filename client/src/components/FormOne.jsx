@@ -38,6 +38,7 @@ class FormOne extends React.Component {
     const {name, email, password} = this.state;
     return (
       <>
+      <h1>Customer Information:</h1>
       <div>Full Name: <input type="text" value={name} name="name" onChange={this.onChange}></input></div>
       <div>Email: <input type="text" value={email} name="email" onChange={this.onChange}></input></div>
       <div>Password: <input type="password" value={password} name="password" onChange={this.onChange}></input></div>

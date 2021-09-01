@@ -11,10 +11,12 @@ class App extends React.Component {
       formOne: {},
       formTwo: {},
       formThree: {},
+      temporaryStorage: [],
     }
     this.nextForm = this.nextForm.bind(this);
     this.previousForm = this.previousForm.bind(this);
     this.saveState = this.saveState.bind(this);
+    this.submitForm = this.submitForm.bind(this);
   }
 
   nextForm = () => {
@@ -32,6 +34,20 @@ class App extends React.Component {
     var form = 'form' + number;
     this.setState ({
       [form]: object,
+    })
+  }
+
+  submitForm(object) {
+    const {formOne, formTwo, temporaryStorage} = this.state;
+    var submission = [];
+    submission.push(formOne, formTwo, object)
+    temporaryStorage.push(submission)
+    this.setState ({
+      form: 0,
+      formOne: {},
+      formTwo: {},
+      formThree: {},
+      temporaryStorage: temporaryStorage,
     })
   }
 
@@ -57,7 +73,7 @@ class App extends React.Component {
     } else if (this.state.form === 3) {
       return (
         <>
-        <FormThree previousForm={this.previousForm}/>
+        <FormThree submitForm={this.submitForm} previousForm={this.previousForm} saveState={this.saveState} form={this.state.formThree}/>
         </>
       )
     }

@@ -1,0 +1,22 @@
+// Check DB
+db
+
+// Switch to [database]
+use checkout
+
+// Add collection
+db.customer.insertMany([
+  {name: 'alan fong', email: 'afong@berkeley.edu', password:'testing'}
+]);
+db.address.insertMany([
+  {addressOne: '9113 E Fairview Ave.', addressTwo: 'Apt 11', city: 'San Gabriel', state: 'CA', zipcode: 91775}
+]);
+db.payment.insertMany([
+  {creditcard: 1234123412341234, expiryDate: '2021-09', cvv: 999, billingZipCode: 91775}
+]);
+
+// Check Insertion Complete
+db.customer.find({}).pretty();
+db.address.find({}).pretty();
+db.payment.find({}).pretty();
+

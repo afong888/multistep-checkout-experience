@@ -46,7 +46,7 @@ class FormTwo extends React.Component {
       </div>
       <div>City: <input type="text" value={city} name="city" onChange={this.onChange}></input></div>
       <div>State: <input type="text" value={state} name="state" onChange={this.onChange}></input></div>
-      <div>Zip Code: <input type="number" value={zipcode} name="zipcode" onChange={this.onChange}></input></div>
+      <div>Zip Code: <input type="tel" value={zipcode} name="zipcode" onChange={this.onChange}></input></div>
       <button onClick={this.backClick}>Back</button>
       <button onClick={this.nextClick}>Next</button>
       </>
