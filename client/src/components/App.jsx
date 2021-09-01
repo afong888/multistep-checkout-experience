@@ -8,9 +8,13 @@ class App extends React.Component {
     super();
     this.state = {
       form: 0,
+      formOne: {},
+      formTwo: {},
+      formThree: {},
     }
     this.nextForm = this.nextForm.bind(this);
     this.previousForm = this.previousForm.bind(this);
+    this.saveState = this.saveState.bind(this);
   }
 
   nextForm = () => {
@@ -24,6 +28,13 @@ class App extends React.Component {
     })
   }
 
+  saveState (number, object) {
+    var form = 'form' + number;
+    this.setState ({
+      [form]: object,
+    })
+  }
+
   render() {
     if (this.state.form === 0) {
       return (
@@ -34,13 +45,13 @@ class App extends React.Component {
     } else if (this.state.form === 1) {
       return (
         <>
-        <FormOne nextForm={this.nextForm} previousForm={this.previousForm}/>
+        <FormOne nextForm={this.nextForm} previousForm={this.previousForm} saveState={this.saveState} form={this.state.formOne}/>
         </>
       )
     } else if (this.state.form === 2) {
       return (
         <>
-        <FormTwo nextForm={this.nextForm} previousForm={this.previousForm}/>
+        <FormTwo nextForm={this.nextForm} previousForm={this.previousForm} saveState={this.saveState} form={this.state.formTwo}/>
         </>
       )
     } else if (this.state.form === 3) {
